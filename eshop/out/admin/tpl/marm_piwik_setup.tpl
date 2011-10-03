@@ -60,6 +60,9 @@
 
 </form>
 
+[{assign var="oMarmPiwik" value=$oView->getMarmPiwik()}]
+<div> Version: [{$oMarmPiwik->getVersion()}]</div>
+
 [{include file="bottomnaviitem.tpl"}]
 
 [{include file="bottomitem.tpl"}]

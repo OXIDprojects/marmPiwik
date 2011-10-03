@@ -27,7 +27,7 @@
  
 class marm_piwik {
 
-    const VERSION = '0.2';
+    const VERSION = '0.3';
 
     const CONFIG_ENTRY_NAME = 'marm_piwik_config';
 
@@ -84,6 +84,16 @@ class marm_piwik {
     {
         $this->_loadConfig();
     }
+
+    /**
+     * returns current version of marm_piwik class
+     * @return string
+     */
+    public function getVersion()
+    {
+        return self::VERSION;
+    }
+
     protected function _loadConfig()
     {
         $aSavedConfig = oxConfig::getInstance()->getShopConfVar(self::CONFIG_ENTRY_NAME);
@@ -129,11 +139,11 @@ class marm_piwik {
 
     /**
      * returns config parameter for siteId
-     * @return string
+     * @return int
      */
     public function getPiwikSiteId()
     {
-        return $this->getConfigValue('piwik_site_id');
+        return (int) $this->getConfigValue('piwik_site_id');
     }
 
     /**
@@ -147,14 +157,21 @@ class marm_piwik {
             $sUrl = str_replace(
                 array (
                     'http://',
-                    'https://',
-                    '/proxy.php',
-                    '/proxy-piwik.php'
+                    'https://'
                 ),
                 '',
                 $sUrl
             );
-        }
+            $sUrl = str_replace(
+                array (
+                    '/proxy.php',
+                    '/proxy-piwik.php',
+                    '/piwik.php'
+                ),
+                '/',
+                $sUrl
+            );
+         }
         return $sUrl;
     }
 
@@ -211,6 +228,9 @@ class marm_piwik {
                 elseif(is_double($mPushParam) || is_float($mPushParam)) {
                     $aFormed[] = sprintf("%.2f", $mPushParam);
                 }
+                elseif(is_array($mPushParam) && isset($mPushParam['type']) && $mPushParam['type'] == 'raw') {
+                    $aFormed[] = $mPushParam['value'];
+                }
                 else {
                     $aFormed[] = $mPushParam;
                 }
@@ -228,7 +248,7 @@ class marm_piwik {
     {
         // seems like deprecated but needed for downwards compatibility
         // better use $oViewObject->getArticleCount() at a later time
-        if($oViewObject->getPageNavigation()->iArtCnt > 1) {
+        if($oViewObject->getPageNavigation()->iArtCnt > 0) {
             $this->addPushParams(
                 'setCustomVariable',
                 1,
@@ -427,7 +447,7 @@ class marm_piwik {
 
 //            $this->_aPushParams = array();
         $this->addPushParams('setSiteId',     $this->getPiwikSiteId());
-        $this->addPushParams('setTrackerUrl', "u+'piwik.php'");
+        $this->addPushParams('setTrackerUrl', array('type'=>'raw', 'value' => "u+'piwik.php'"));
 
         $this->_setPiwikParamsByViewObject();
 
