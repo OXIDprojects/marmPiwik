@@ -24,14 +24,22 @@
 
                 <table cellspacing="0" cellpadding="0" border="0">
 
-                    [{foreach from=$oView->getConfigValues() item='sConfigValue' key='sConfigKey'}]
+                    [{foreach from=$oView->getConfigValues() item='aConfigValueOptions' key='sConfigKey'}]
                     <tr>
                         <td class="edittext">
-                            [{ oxmultilang ident=$sConfigKey }]
+                            [{ oxmultilang ident="MARM_PIWIK_CONFIG_"|cat:$sConfigKey }]
                         </td>
                         <td class="edittext">
+                            [{if $aConfigValueOptions.input_type == 'text'}]
                             <input type="text" class="editinput" size="40" maxlength="255"
-                                   name="editval[[{$sConfigKey}]]" value="[{$sConfigValue}]" [{ $readonly }]>
+                                   name="editval[[{$sConfigKey}]]" value="[{$aConfigValueOptions.value}]" [{ $readonly }]>
+                            [{elseif $aConfigValueOptions.input_type == 'select'}]
+                            <select name="editval[[{$sConfigKey}]]">
+                                [{foreach from=$aConfigValueOptions.options item='sConfigOption'}]
+                                <option value="[{$sConfigOption}]"[{if $aConfigValueOptions.value ==$sConfigOption}] selected="selected"[{/if}]>[{$sConfigOption}]</option>
+                                [{/foreach}]
+                            </select>
+                            [{/if}]
                         </td>
                     </tr>
                     [{/foreach}]

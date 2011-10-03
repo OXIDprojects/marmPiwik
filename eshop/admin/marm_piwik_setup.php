@@ -34,30 +34,45 @@ class marm_piwik_setup  extends oxAdminDetails
      */
     protected $_sThisTemplate = "marm_piwik_setup.tpl";
 
-    protected $_aConfigKeys = array(
-        'marm_piwik_site_id',
-        'marm_piwik_url',
-        'marm_piwik_newsletter_goal_id'
-    );
+    /**
+     * saves instance of marm_piwik
+     * @var marm_piwik
+     */
+    protected $_oMarmPiwik = null;
 
-    public function getConfigValues()
+    /**
+     * returns marm_piwik object
+     * @param bool $blReset forde create new object
+     * @return marm_piwik
+     */
+    public function getMarmPiwik($blReset = false)
     {
-        $oConfig = $this->getConfig();
-        $aValues = array();
-        foreach ($this->_aConfigKeys as $sConfigKey) {
-            $aValues[$sConfigKey] = $oConfig->getConfigParam($sConfigKey);
+        if ($this->_oMarmPiwik !== null && !$blReset) {
+            return $this->_oMarmPiwik;
         }
-        return $aValues;
+        $this->_oMarmPiwik = oxNew('marm_piwik');
+
+        return $this->_oMarmPiwik;
     }
 
+    /**
+     * returns marm_piwik full config array
+     * @return array
+     */
+    public function getConfigValues()
+    {
+        $oMarmPiwik = $this->getMarmPiwik();
+        return $oMarmPiwik->getConfig();
+    }
+
+    /**
+     * passes given parameters from 'editval' to marm_piwik change config
+     * @return void
+     */
     public function save()
     {
         $aParams = oxConfig::getParameter( "editval" );
-        $oConfig = $this->getConfig();
-        foreach ($this->_aConfigKeys as $sConfigKey) {
-            if (isset($aParams[$sConfigKey])) {
-                $oConfig->saveShopConfVar( 'str', $sConfigKey, $aParams[$sConfigKey] );
-            }
-        }
+        $oMarmPiwik = $this->getMarmPiwik();
+        $oMarmPiwik->changeConfig($aParams);
     }
 }

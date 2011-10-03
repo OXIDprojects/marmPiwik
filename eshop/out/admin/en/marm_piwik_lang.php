@@ -31,9 +31,20 @@ $sLangName  = "English";
 // RESOURCE IDENTITFIER = STRING
 // -------------------------------
 $aLang = array(
-    'charset'                                  => 'ISO-8859-15',
-    'tbclmarm_piwik_setup' => 'Piwik setup',
-    'marm_piwik_site_id' => 'Piwik SiteId',
-    'marm_piwik_url' => 'Piwik URL',
-    'marm_piwik_newsletter_goal_id' => 'Newsletter goal ID'
+    'charset'                                	  	=> 'ISO-8859-15',
+    'tbclmarm_piwik_setup'							=> 'Piwik',
+    'MARM_PIWIK_CONFIG_piwik_site_id' 				=> 'Piwik SiteId',
+    'MARM_PIWIK_CONFIG_piwik_url' 					=> 'Piwik URL',
+    'MARM_PIWIK_CONFIG_newsletter_goal_id' 			=> 'Newsletter goal ID',
+    'MARM_PIWIK_CONFIG_tracking_method' 			=> 'Choose tracking method (Pro-Version only)',
+    'MARM_PIWIK_CONFIG_tracking_method_php' 		=> 'Serverside by PHP (Pro-Version only)',
+    'MARM_PIWIK_CONFIG_tracking_method_javascript' 	=> 'Frontend by JavaScript',
+    'MARM_PIWIK_CONFIG_newsletter_var_name' 		=> 'Newsletter variable name in "Custom variables"',
+    'MARM_PIWIK_CONFIG_newsletter_var_subscribed' 	=> 'Newsletter value then subscribed',
+    'MARM_PIWIK_CONFIG_newsletter_var_activated' 	=> 'Newsletter value then confirmed subscription',
+    'MARM_PIWIK_CONFIG_newsletter_var_unsubscribed' => 'Newsletter value then unsubscribed',
+    'MARM_PIWIK_CONFIG_newsletter_var_form_showed' 	=> 'Newsletter value then newsletter form is showed in frontend',
+    'MARM_PIWIK_CONFIG_searched_for_var_name' 		=> 'Search variable name in "Custom variables"',
+    'MARM_PIWIK_CONFIG_no_search_results_var_name' 	=> '"No results for" variable name in "Custom variables"',
+    'MARM_PIWIK_CONFIG_' 							=> '',
 );
