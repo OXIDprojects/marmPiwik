@@ -61,7 +61,23 @@
 </form>
 
 [{assign var="oMarmPiwik" value=$oView->getMarmPiwik()}]
-<div> Version: [{$oMarmPiwik->getVersion()}]</div>
+<div>Version: [{$oMarmPiwik->getVersion()}]</div>
+<div>
+<br />
+<strong>Weiterentwicklung unterst&uuml;tzen</strong><br />
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="LLX5QW69EU2DU"><input type="image" src="https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="Jetzt einfach, schnell und sicher online bezahlen – mit PayPal."><img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1"></form>
+<br />
+<strong>Sponsoring by:</strong><br />
+	<a href="http://www.marmalade.de/" target=_blank" title="marmalade.de :: Webdesign">
+	<img src="[{$oViewConf->getResourceUrl()}]marmpiwik/marmalade.gif" />
+	</a><br /><br />
+	<a href="http://www.wtc-productions.de/" target=_blank" title="WTC Media Productions">
+	<img src="[{$oViewConf->getResourceUrl()}]marmpiwik/wtc.gif" />
+	</a><br /><br />
+	<a href="http://www.haller-stahlwaren.de/" target=_blank" title="Hebsacker Stahlwaren">
+	<img src="[{$oViewConf->getResourceUrl()}]marmpiwik/hebsacker.gif" />
+	</a>
+</div>
 
 [{include file="bottomnaviitem.tpl"}]
 
