@@ -68,7 +68,7 @@
 						<td align="center" valign="top">
 							<div>
 							<strong>Sponsoring by:</strong><br />
-								<a href="http://www.haller-stahlwaren.de/" target=_blank" title="Hebsacker Stahlwaren">
+								<a href="http://www.stahlwarenhaus-hebsacker.de/" target=_blank" title="Hebsacker Stahlwaren">
 								<img src="[{$oViewConf->getResourceUrl()}]marmpiwik/hebsacker.gif" align="center" />
 								</a>
 								</a><br /><br />

@@ -6,18 +6,18 @@
 1) copy files from "eshop" to your shop
 
 #####	
-3) Add the following module-entries in your configuration
+2) Add the following module-entries in your configuration
 
 	oxoutput => marm/piwik/marm_piwik_oxoutput
 
 	
 #####	
-4) Set up your PIWIK variables in Master Settings > Core Settings > Piwik setup
+3) Set up your PIWIK variables in Master Settings > Core Settings > Piwik setup
 
 	Piwik URL should be without piwik.php ending. like "www.example.org/piwik/"
 
 #####
-5) clean you language cache (cleanup eshop tmp dir)
+4) Clean your language cache (cleanup eShop tmp directory)
 
 
 
