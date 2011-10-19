@@ -27,7 +27,7 @@
  
 class marm_piwik {
 
-    const VERSION = '0.3';
+    const VERSION = '0.4';
 
     const CONFIG_ENTRY_NAME = 'marm_piwik_config';
 
@@ -220,7 +220,14 @@ class marm_piwik {
             $aFormed = array();
             foreach($aPushArray as $mPushParam) {
                 if (is_string($mPushParam)) {
-                    $aFormed[] = '"'.preg_replace('#(?<!\\\\)"#', '\"', $mPushParam).'"';
+					$pattern=array();
+					$pattern[0]='#(?<!\\\\)"#';
+					$pattern[1]='#&quot;#';
+					$replacement=array();
+					$replacement[0]='\"';
+					$replacement[1]='\"';
+                    $aFormed[] = '"'.preg_replace($pattern, $replacement, $mPushParam).'"';
+				
                 }
                 elseif(is_bool($mPushParam)) {
                     $aFormed[] = $mPushParam?'true':'false';
