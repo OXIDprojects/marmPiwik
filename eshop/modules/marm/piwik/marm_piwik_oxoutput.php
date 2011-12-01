@@ -34,7 +34,10 @@ class marm_piwik_oxoutput extends marm_piwik_oxoutput_parent
      */
     public function marmReplaceBody( $sOutput )
     {
-        if(!isAdmin()) {
+        $blAdminUser=false;
+        $oUser=$this->getUser();
+        if ($oUser) $blAdminUser=$oUser->inGroup("oxidadmin");
+        if(!isAdmin()&!$blAdminUser) {
             $oMarmPiwik = oxNew('marm_piwik');
             $sPiwikCode = $oMarmPiwik->getMarmPiwikCode();
             $sOutput = str_ireplace("</body>", "{$sPiwikCode}\n</body>", ltrim($sOutput));
