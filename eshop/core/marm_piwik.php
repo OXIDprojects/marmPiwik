@@ -27,7 +27,7 @@
  
 class marm_piwik {
 
-    const VERSION = '0.4';
+    const VERSION = '0.5';
 
     const CONFIG_ENTRY_NAME = 'marm_piwik_config';
 
