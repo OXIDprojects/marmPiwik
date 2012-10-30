@@ -37,7 +37,7 @@ class marm_piwik {
             'input_type' => 'text'
         ),
         'piwik_url' => array(
-            'value'=> 'http://yourshopurl.com/piwik/piwik.php',
+            'value'=> 'http://yourshopurl.com/piwik/',
             'input_type' => 'text'
         ),
         'tracking_method' => array(
