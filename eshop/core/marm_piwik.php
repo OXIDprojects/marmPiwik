@@ -359,7 +359,7 @@ class marm_piwik {
                 $oArticle->oxarticles__oxartnum->value,
                 $oArticle->oxarticles__oxtitle->value,
                 $oArticle->getCategory()->oxcategories__oxtitle->value,
-                $oBasketItem->getUnitPrice()->getBruttoPrice(),
+                number_format($oBasketItem->getUnitPrice()->getBruttoPrice(),2),
                 $oBasketItem->getAmount()
             );
         }

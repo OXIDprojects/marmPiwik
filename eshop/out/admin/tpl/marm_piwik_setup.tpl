@@ -34,8 +34,8 @@
 								[{/foreach}]
 							</select>
 							[{/if}]
+							[{ oxinputhelp ident="HELP_MARM_PIWIK_CONFIG_"|cat:$sConfigKey }]
 						</td>
-						
 					</tr>
 					[{/foreach}]
 					<tr>
@@ -48,10 +48,20 @@
 								   value="[{ oxmultilang ident="GENERAL_SAVE" }]"
 								   onclick="Javascript:document.myedit.fnc.value='save'"" [{ $readonly }]><br>
 						</td>
+                        
 					</tr>
 				</table>	
 			</td>
-			<td align="center" valign="top">
+			
+		</tr>
+	</table>
+</form>
+<table><tr><td valign="top" width="280px;>
+<div>
+	<strong>Weiterentwicklung unterst&uuml;tzen</strong><br />
+	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="LLX5QW69EU2DU"><input type="image" src="https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="Jetzt einfach, schnell und sicher online bezahlen – mit PayPal."><img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1"></form>
+</div></td>
+<td align="center" valign="top">
 				<div>
 				<strong>Sponsoring by:</strong><br />
 					<a href="http://www.wtc-productions.de/" target="_blank" title="WTC Media Productions">
@@ -65,13 +75,9 @@
                     </a>
 				</div>
 			</td>
-		</tr>
-	</table>
-</form>
-<div>
-	<strong>Weiterentwicklung unterst&uuml;tzen</strong><br />
-	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="LLX5QW69EU2DU"><input type="image" src="https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="Jetzt einfach, schnell und sicher online bezahlen – mit PayPal."><img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1"></form>
-</div>
+</tr></table>
+			
+		
 
 [{include file="bottomnaviitem.tpl"}]
 [{include file="bottomitem.tpl"}]
