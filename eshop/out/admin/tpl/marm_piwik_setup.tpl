@@ -22,19 +22,29 @@
 					<tr>
 						<td class="edittext">
 							[{ oxmultilang ident="MARM_PIWIK_CONFIG_"|cat:$sConfigKey }]
+                             
 						</td>
 						<td class="edittext">
 							[{if $aConfigValueOptions.input_type == 'text'}]
+                        
 							<input type="text" class="editinput" size="40" maxlength="255"
+                               
 								   name="editval[[{$sConfigKey}]]" value="[{$aConfigValueOptions.value}]" [{ $readonly }]>
-							[{elseif $aConfigValueOptions.input_type == 'select'}]
+                                  [{/if}]
+							[{if $aConfigValueOptions.input_type == 'select'}]
+                             
 							<select name="editval[[{$sConfigKey}]]">
+                            
 								[{foreach from=$aConfigValueOptions.options item='sConfigOption'}]
+                                
 								<option value="[{$sConfigOption}]"[{if $aConfigValueOptions.value ==$sConfigOption}] selected="selected"[{/if}]>[{$sConfigOption}]</option>
-								[{/foreach}]
+								  
+                                [{/foreach}]
 							</select>
+                            
 							[{/if}]
-							[{ oxinputhelp ident="HELP_MARM_PIWIK_CONFIG_"|cat:$sConfigKey }]
+							 [{ oxinputhelp ident="HELP_MARM_PIWIK_CONFIG_"|cat:$sConfigKey }]
+                         
 						</td>
 					</tr>
 					[{/foreach}]
@@ -56,7 +66,7 @@
 		</tr>
 	</table>
 </form>
-<table><tr><td valign="top" width="280px;>
+<table><tr><td valign="top"  width="250px;">
 <div>
 	<strong>Weiterentwicklung unterst&uuml;tzen</strong><br />
 	<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_blank"><input type="hidden" name="cmd" value="_s-xclick"><input type="hidden" name="hosted_button_id" value="LLX5QW69EU2DU"><input type="image" src="https://www.paypalobjects.com/de_DE/DE/i/btn/btn_donate_LG.gif" border="0" name="submit" alt="Jetzt einfach, schnell und sicher online bezahlen – mit PayPal."><img alt="" border="0" src="https://www.paypalobjects.com/de_DE/i/scr/pixel.gif" width="1" height="1"></form>
