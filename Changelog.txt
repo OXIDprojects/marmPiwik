@@ -1,0 +1,10 @@
+#########################
+# Change Log            #
+#########################
+
+
+Fixed price format Submitted By Andreas Pollak on 25.10.2012
+
+Added "Help Icons" Submitted By Marcus Pleintinger on 18.10.2012
+
+
