@@ -27,7 +27,7 @@
  
 class marm_piwik {
 
-    const VERSION = '0.5';
+    const VERSION = '0.6';
 
     const CONFIG_ENTRY_NAME = 'marm_piwik_config';
 
@@ -242,7 +242,7 @@ class marm_piwik {
                     $aFormed[] = $mPushParam;
                 }
             }
-            $sReturn .="\n _paq.push([".implode(', ', $aFormed)."]);";
+            $sReturn .="\n_paq.push([".implode(', ', $aFormed)."]);";
         }
         return $sReturn;
     }
@@ -447,10 +447,10 @@ class marm_piwik {
         $sMarmPiwikCode = "<!-- Piwik Plugin by marmalade.de, sponsored by WTC Media Productions and Hebsacker Stahlwaren GmbH -->\n";
         $sMarmPiwikCode .= '<script type="text/javascript">';
         $sMarmPiwikCode .= '
-                            var _paq = _paq || [];
-                            (function(){
-                                var u=(("https:" == document.location.protocol) ? "https://'.$this->getPiwikUrl(false).'" : "http://'.$this->getPiwikUrl(false).'");
-                                ';
+var _paq = _paq || [];
+(function(){
+var u=(("https:" == document.location.protocol) ? "https://'.$this->getPiwikUrl(false).'" : "http://'.$this->getPiwikUrl(false).'");
+';
 
 //            $this->_aPushParams = array();
         $this->addPushParams('setSiteId',     $this->getPiwikSiteId());
@@ -463,21 +463,18 @@ class marm_piwik {
 
         $sMarmPiwikCode .= $this->generateParams();
         $sMarmPiwikCode .= '
-                                var d=document,
-                                    g=d.createElement(\'script\'),
-                                    s=d.getElementsByTagName(\'script\')[0];
-                                    g.type=\'text/javascript\';
-                                    g.defer=true;
-                                    g.async=true;
-                                    g.src=u+\'piwik.js\';
-                                    s.parentNode.insertBefore(g,s);
-                            })();';
+var d=document,
+g=d.createElement(\'script\'),
+s=d.getElementsByTagName(\'script\')[0];
+g.type=\'text/javascript\';
+g.defer=true;
+g.async=true;
+g.src=u+\'piwik.js\';
+s.parentNode.insertBefore(g,s);
+})();';
         $sMarmPiwikCode .= '</script>';
-        $sMarmPiwikCode .= '
-                            <noscript>
-                                <img src="'.$this->getPiwikUrl().'?idsite='.$this->getPiwikSiteId().'&rec=1" style="border:0" alt="" />
-                            </noscript>
-                            <!-- End Piwik -->';
+        $sMarmPiwikCode .= '<noscript><img src="'.$this->getPiwikUrl().'?idsite='.$this->getPiwikSiteId().'&rec=1" style="border:0" alt="" /></noscript>
+<!-- End Piwik -->';
         return $sMarmPiwikCode;
     }
 }

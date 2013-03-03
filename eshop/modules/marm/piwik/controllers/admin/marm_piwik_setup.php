@@ -25,7 +25,7 @@
  * IN THE SOFTWARE.
  */
 
-class marm_piwik_setup  extends oxAdminDetails
+class marm_piwik_setup extends oxAdminDetails
 {
     /**
      * Current class template name

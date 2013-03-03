@@ -30,21 +30,18 @@
 							<input type="text" class="editinput" size="40" maxlength="255"
                                
 								   name="editval[[{$sConfigKey}]]" value="[{$aConfigValueOptions.value}]" [{ $readonly }]>
-                                  [{/if}]
+							[{/if}]
 							[{if $aConfigValueOptions.input_type == 'select'}]
                              
 							<select name="editval[[{$sConfigKey}]]">
                             
 								[{foreach from=$aConfigValueOptions.options item='sConfigOption'}]
-                                
-								<option value="[{$sConfigOption}]"[{if $aConfigValueOptions.value ==$sConfigOption}] selected="selected"[{/if}]>[{$sConfigOption}]</option>
-								  
-                                [{/foreach}]
+									<option value="[{$sConfigOption}]"[{if $aConfigValueOptions.value ==$sConfigOption}] selected="selected"[{/if}]>[{$sConfigOption}]</option>  
+								[{/foreach}]
 							</select>
                             
 							[{/if}]
-							 [{ oxinputhelp ident="HELP_MARM_PIWIK_CONFIG_"|cat:$sConfigKey }]
-                         
+							[{ oxinputhelp ident="HELP_MARM_PIWIK_CONFIG_"|cat:$sConfigKey }]
 						</td>
 					</tr>
 					[{/foreach}]
@@ -75,11 +72,12 @@
 				<div>
 				<strong>Sponsoring by:</strong><br />
 					<a href="http://www.wtc-productions.de/" target="_blank" title="WTC Media Productions">
-					<img src="[{$oViewConf->getResourceUrl()}]marmpiwik/wtc.gif" style="max-width:100px;" align="center"></a>
+						<img src="[{$oViewConf->getBaseDir()}]/modules/marm/piwik/out/pictures/marmpiwik/wtc.gif" style="max-width:100px;" align="center"></a>
 					<a href="http://www.stahlwarenhaus-hebsacker.de/" target="_blank" title="Hebsacker Stahlwaren">
-					<img src="[{$oViewConf->getResourceUrl()}]marmpiwik/hebsacker.gif" style="max-width:100px;" align="center"></a>
+						<img src="[{$oViewConf->getBaseDir()}]modules/marm/piwik/out/pictures/marmpiwik/hebsacker.gif" style="max-width:100px;" align="center"></a>
 					<a href="http://www.marmalade.de/" target="_blank" title="marmalade.de :: Webdesign">
-					<img src="[{$oViewConf->getResourceUrl()}]marmpiwik/marmalade.gif" style="max-width:150px;" align="center"></a>
+						<img src="[{$oViewConf->getBaseDir()}]modules/marm/piwik/out/pictures/marmpiwik/marmalade.gif" style="max-width:150px;" align="center">
+					</a>
 				</div>
 			</td>
 </tr></table>
