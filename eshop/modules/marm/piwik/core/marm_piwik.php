@@ -255,7 +255,7 @@ class marm_piwik {
     {
         // seems like deprecated but needed for downwards compatibility
         // better use $oViewObject->getArticleCount() at a later time
-        if($oViewObject->getPageNavigation()->iArtCnt > 0) {
+        if($oViewObject->getPageNavigation()->NrOfPages > 0) {
             $this->addPushParams(
                 'setCustomVariable',
                 1,
