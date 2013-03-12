@@ -473,7 +473,7 @@ g.src=u+\'piwik.js\';
 s.parentNode.insertBefore(g,s);
 })();';
         $sMarmPiwikCode .= '</script>';
-        $sMarmPiwikCode .= '<noscript><img src="'.$this->getPiwikUrl().'?idsite='.$this->getPiwikSiteId().'&rec=1" style="border:0" alt="" /></noscript>
+        $sMarmPiwikCode .= '<noscript><img src="'.$this->getPiwikUrl().'?idsite='.$this->getPiwikSiteId().'&amp;rec=1" style="border:0" alt="" /></noscript>
 <!-- End Piwik -->';
         return $sMarmPiwikCode;
     }
