@@ -8,12 +8,12 @@
 
 	$aModule = array(
 		'id'		=> 'marmpiwik',
-		'title'		=> 'marmalade.de Piwik',
-		'thumbnail'	=> 'marmalade_logo.png',
-		'url'		=> 'https://github.com/OXIDprojects/marmPiwik',
-		'version'	=> '0.6',
-		'author'	=> 'marmalade.de',
-		'email'		=> 'krug@marmalade.de',
+		'title'		=> 'marmalade :: Piwik',
+		'thumbnail'	=> 'marmalade.jpg',
+		'url'		=> 'https://github.com/jkrug/marmPiwik',
+		'version'	=> '0.7',
+		'author'	=> 'marmalade GmbH',
+		'email'		=> 'support@marmalade.de',
 		
 		'description'	=> array(
 			'de'		=> 'Tracking mit Piwik',
@@ -33,4 +33,4 @@
 			'marm_piwik_setup.tpl'	=> 'marm/piwik/views/admin/tpl/marm_piwik_setup.tpl'
 		)
 		
-	); //
+	);
