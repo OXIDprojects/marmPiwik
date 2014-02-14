@@ -54,7 +54,14 @@ class marm_piwik_oxoutput extends marm_piwik_oxoutput_parent
     public function process($sValue, $sClassName)
     {
         $sValue = parent::process($sValue, $sClassName);
-        $sValue = $this->marmReplaceBody( $sValue);
+
+		//Stefan Kittel July 09 2013
+		//if $sClassName == "oxemail" the function is called from the mail engine!
+		//in this case no Piwikcode should be inserted
+		if($sClassName != "oxemail") {
+			$sValue = $this->marmReplaceBody( $sValue);
+		}
+
         return $sValue;
     }
 }
