@@ -25,36 +25,54 @@
  * IN THE SOFTWARE.
  */
 
-class marm_piwik_oxoutput extends marm_piwik_oxoutput_parent
+class marm_piwik_setup extends oxAdminDetails
 {
     /**
-     * appends PIWIK javascript source before body tag
-     * @param $sOutput
-     * @return mixed
+     * Current class template name
+     *
+     * @var string
      */
-    public function marmReplaceBody( $sOutput )
+    protected $_sThisTemplate = "marm_piwik_setup.tpl";
+
+    /**
+     * saves instance of marm_piwik
+     * @var marm_piwik
+     */
+    protected $_oMarmPiwik = null;
+
+    /**
+     * returns marm_piwik object
+     * @param bool $blReset forde create new object
+     * @return marm_piwik
+     */
+    public function getMarmPiwik($blReset = false)
     {
-        $blAdminUser=false;
-        $oUser=$this->getUser();
-        if ($oUser) $blAdminUser=$oUser->inGroup("oxidadmin");
-        if(!isAdmin()&&!$blAdminUser) {
-            $oMarmPiwik = oxNew('marm_piwik');
-            $sPiwikCode = $oMarmPiwik->getMarmPiwikCode();
-            $sOutput = str_ireplace("</body>", "{$sPiwikCode}\n</body>", ltrim($sOutput));
+        if ($this->_oMarmPiwik !== null && !$blReset) {
+            return $this->_oMarmPiwik;
         }
-        return $sOutput;
+        $this->_oMarmPiwik = oxNew('marm_piwik');
+
+        return $this->_oMarmPiwik;
     }
 
     /**
-     * returns $sValue filtered by parent and marm_piwik_oxoutput::marmReplaceBody
-     * @param $sValue
-     * @param $sClassName
-     * @return mixed
+     * returns marm_piwik full config array
+     * @return array
      */
-    public function process($sValue, $sClassName)
+    public function getConfigValues()
     {
-        $sValue = parent::process($sValue, $sClassName);
-        $sValue = $this->marmReplaceBody( $sValue);
-        return $sValue;
+        $oMarmPiwik = $this->getMarmPiwik();
+        return $oMarmPiwik->getConfig();
+    }
+
+    /**
+     * passes given parameters from 'editval' to marm_piwik change config
+     * @return void
+     */
+    public function save()
+    {
+        $aParams = oxConfig::getParameter( "editval" );
+        $oMarmPiwik = $this->getMarmPiwik();
+        $oMarmPiwik->changeConfig($aParams);
     }
 }

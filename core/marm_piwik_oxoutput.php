@@ -25,54 +25,43 @@
  * IN THE SOFTWARE.
  */
 
-class marm_piwik_setup  extends oxAdminDetails
+class marm_piwik_oxoutput extends marm_piwik_oxoutput_parent
 {
     /**
-     * Current class template name
-     *
-     * @var string
+     * appends PIWIK javascript source before body tag
+     * @param $sOutput
+     * @return mixed
      */
-    protected $_sThisTemplate = "marm_piwik_setup.tpl";
-
-    /**
-     * saves instance of marm_piwik
-     * @var marm_piwik
-     */
-    protected $_oMarmPiwik = null;
-
-    /**
-     * returns marm_piwik object
-     * @param bool $blReset forde create new object
-     * @return marm_piwik
-     */
-    public function getMarmPiwik($blReset = false)
+    public function marmReplaceBody( $sOutput )
     {
-        if ($this->_oMarmPiwik !== null && !$blReset) {
-            return $this->_oMarmPiwik;
+        $blAdminUser=false;
+        $oUser=$this->getUser();
+        if ($oUser) $blAdminUser=$oUser->inGroup("oxidadmin");
+        if(!isAdmin()&&!$blAdminUser) {
+            $oMarmPiwik = oxNew('marm_piwik');
+            $sPiwikCode = $oMarmPiwik->getMarmPiwikCode();
+            $sOutput = str_ireplace("</body>", "{$sPiwikCode}\n</body>", ltrim($sOutput));
         }
-        $this->_oMarmPiwik = oxNew('marm_piwik');
-
-        return $this->_oMarmPiwik;
+        return $sOutput;
     }
 
     /**
-     * returns marm_piwik full config array
-     * @return array
+     * returns $sValue filtered by parent and marm_piwik_oxoutput::marmReplaceBody
+     * @param $sValue
+     * @param $sClassName
+     * @return mixed
      */
-    public function getConfigValues()
+    public function process($sValue, $sClassName)
     {
-        $oMarmPiwik = $this->getMarmPiwik();
-        return $oMarmPiwik->getConfig();
-    }
+        $sValue = parent::process($sValue, $sClassName);
 
-    /**
-     * passes given parameters from 'editval' to marm_piwik change config
-     * @return void
-     */
-    public function save()
-    {
-        $aParams = oxConfig::getParameter( "editval" );
-        $oMarmPiwik = $this->getMarmPiwik();
-        $oMarmPiwik->changeConfig($aParams);
+		//Stefan Kittel July 09 2013
+		//if $sClassName == "oxemail" the function is called from the mail engine!
+		//in this case no Piwikcode should be inserted
+		if($sClassName != "oxemail") {
+			$sValue = $this->marmReplaceBody( $sValue);
+		}
+
+        return $sValue;
     }
 }
