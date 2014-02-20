@@ -1,15 +1,6 @@
 marmalade :: Piwik
 ==================
-Integrates the Pwiki tracking code into OXID eShop
-
-Installation / Config
----------------------
-
-
-marmalade :: Piwik
-==================
-Integriert den Piwik-Trackingcode in OXID eShop
-
+Integrates the Piwik tracking code into OXID eShop
 
 Installation / Config
 ---------------------
