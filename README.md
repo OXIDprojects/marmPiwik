@@ -5,11 +5,24 @@ Integrates the Pwiki tracking code into OXID eShop
 Installation / Config
 ---------------------
 
+
+marmalade :: Piwik
+==================
+Integriert den Piwik-Trackingcode in OXID eShop
+
+
+Installation / Config
+---------------------
+
 *    backup shop and database
 
-*    copy files from "eshop" to your shop
+*    copy the files from the repository to your shop in the directory
+     `modules/marm/piwik/`
 
-*    Enable module under Extension => Module => marmalade.de Piwik
+*    Create the empty file `vendormetadata.php` in the directory above
+     `modules/marm/`
+
+*    Enable module under Extension > Module > marmalade.de Piwik
 
 *    Set up your PIWIK variables in Master Settings > Core Settings > Piwik setup
 

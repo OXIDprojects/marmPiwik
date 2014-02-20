@@ -8,11 +8,13 @@ Installation / Config
 
 *    Backup von Shop und Datenbank erstellen
 
-*    Dateien/Ordner aus "eshop" ins Shop-Verzeichnis kopieren
+*    Dateien/Ordner des Repositories im Shop in das folgende Verzeichnis kopieren
+     `modules/marm/piwik/`
+	 
+*    erstellen Sie eine leere Datei `vendormetadata.php` im übergeordneten Verzeichnis
+     `modules/marm/`
 	
-*    Moduleinträge hinzufügen
-
-	 oxoutput => marm/piwik/marm_piwik_oxoutput
+*    aktivieren Sie das Modul im Backend
 
 *    PIWIK-Daten eintragen in 'Stammdaten > Grundeinstellungen > Piwik'
 
